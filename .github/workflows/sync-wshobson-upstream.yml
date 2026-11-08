@@ -1,0 +1,47 @@
+name: Sync wshobson upstream
+on:
+  schedule:
+    - cron: '23 9 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: sync-wshobson-upstream
+  cancel-in-progress: false
+jobs:
+  sync:
+    if: github.repository == 'therealityreport/wshobson-agents'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 0
+          ref: main
+      - name: Merge upstream and retain marketplace name
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git remote add upstream https://github.com/wshobson/agents.git
+          git fetch upstream main
+          git merge --no-commit --no-ff upstream/main
+          python3 - <<'PYTHON'
+          import json
+          from pathlib import Path
+          for name in ('.claude-plugin/marketplace.json', '.agents/plugins/marketplace.json'):
+              path = Path(name)
+              raw = path.read_text()
+              data = json.loads(raw)
+              old = data['name']
+              assert old in ('wshobson', 'claude-code-workflows'), old
+              updated = raw.replace('"name": ' + json.dumps(old), '"name": "wshobson"', 1)
+              assert json.loads(updated) == dict(data, name='wshobson')
+              path.write_text(updated)
+          PYTHON
+          git add .claude-plugin/marketplace.json .agents/plugins/marketplace.json
+          if git rev-parse -q --verify MERGE_HEAD >/dev/null || ! git diff --cached --quiet; then
+            git commit -m 'Sync upstream while retaining wshobson marketplace name'
+            git push origin HEAD:main
+          fi
