@@ -5,6 +5,8 @@ description: Use this skill when designing or reviewing a PostgreSQL-specific sc
 
 # PostgreSQL Table Design
 
+Bind the PostgreSQL version, schema, workload, and environment. A design request does not authorize live DDL. Check current engine documentation and validate changes before an authorized migration.
+
 ## When to Use
 
 - Designing a new PostgreSQL schema, or reviewing one before it ships.
@@ -12,9 +14,7 @@ description: Use this skill when designing or reviewing a PostgreSQL-specific sc
 - Deciding whether and how to partition a large table, or how to store semi-structured data.
 - Planning a schema change on a live database without downtime.
 
-The rules and decision points for a PostgreSQL schema. The full data-type catalog, workload
-patterns (update-heavy, insert-heavy, upsert, schema evolution), extensions, JSONB indexing,
-and worked DDL examples are in `references/details.md`; open it when a section below points there.
+Read [details](references/details.md) for the full type catalog, workload patterns, extensions, and JSONB indexing.
 
 ## Core Rules
 
@@ -67,7 +67,7 @@ and worked DDL examples are in `references/details.md`; open it when a section b
 ## Indexing
 
 - **B-tree**: default for equality/range (`=`, `<`, `>`, `BETWEEN`, `ORDER BY`).
-- **Composite**: leftmost-prefix rule (`WHERE a = ? AND b > ?` uses `(a,b)`; `WHERE b = ?` does not). Most selective columns first.
+- **Composite**: leading equality columns, followed by the first range column, usually limit the B-tree scan. Other columns can still help; PG18+ can use skip scans for some queries without a leading equality. Choose column order from actual queries and verify with `EXPLAIN`.
 - **Covering**: `CREATE INDEX ON tbl (id) INCLUDE (name, email)` for index-only scans.
 - **Partial**: hot subsets, `CREATE INDEX ON tbl (user_id) WHERE status = 'active'`.
 - **Expression**: `CREATE INDEX ON tbl (LOWER(email))`; the query must use the same expression.
@@ -119,7 +119,7 @@ CREATE INDEX profiles_attrs_gin ON profiles USING GIN (attrs);
 
 ## Going deeper
 
-`references/details.md` holds the material this file only names:
+[The detailed reference](references/details.md) holds the material this file only names:
 
 - The full data-type catalog: TOAST storage, collations, arrays, ranges, network, geometric, text search, domains, composites, vectors.
 - Table types (`TEMPORARY`, `UNLOGGED`) and row-level security.

@@ -1,0 +1,22 @@
+{
+  "repository": "https://github.com/wshobson/agents",
+  "revision": "7e2fb559cf4b824b27f1fec49fe88f7511066d26",
+  "upstream_version": "1.2.2",
+  "previous_revision": "c4b82b0ad771190355eb8e204b1329732a18449a",
+  "codex_version": "1.2.2+codex.20261103",
+  "reviewed_on": "2026-11-03",
+  "source_projection": "/Users/thomashulihan/.codex/github-marketplaces/wshobson/plugins/database-cloud-optimization",
+  "icon_url": "https://github.githubassets.com/favicons/favicon.png",
+  "icon_sha256": "74cf90ac2fe6624ab1056cacea11cf7ed4f8bef54bbb0e869638013bba45bc08",
+  "claude_track": "Source metadata 1.2.2 for changed shared files; Claude installation unchanged.",
+  "codex_adaptations": [
+    "Retain local command-derived skill wrappers and authorization boundaries.",
+    "Import upstream command request-data boundaries and descriptions.",
+    "No declared MCP, app, hook, or runtime package dependency."
+  ],
+  "upstream_deltas": [
+    "Upstream plugin manifest version changed from 1.2.1 to 1.2.2.",
+    "Source agent profiles are unchanged from the prior projection.",
+    "Command workflows add caller-data isolation; applicable commands also add description frontmatter."
+  ]
+}

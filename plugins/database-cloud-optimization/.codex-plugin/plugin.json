@@ -1,0 +1,21 @@
+{
+  "name": "database-cloud-optimization",
+  "version": "1.2.2+codex.20261103.1",
+  "description": "Database query optimization, cloud cost optimization, and scalability improvements",
+  "skills": "./skills/",
+  "author": {
+    "name": "Seth Hobson",
+    "email": "seth@major7apps.com"
+  },
+  "license": "MIT",
+  "interface": {
+    "displayName": "Database Cloud Optimization",
+    "shortDescription": "Database query optimization, cloud cost optimization, and scalability improvements",
+    "category": "Coding",
+    "websiteURL": "https://github.com/wshobson/agents/tree/7e2fb559cf4b824b27f1fec49fe88f7511066d26/plugins/database-cloud-optimization",
+    "composerIcon": "./assets/github.png",
+    "logo": "./assets/github.png"
+  },
+  "homepage": "https://github.com/wshobson/agents/tree/7e2fb559cf4b824b27f1fec49fe88f7511066d26/plugins/database-cloud-optimization",
+  "repository": "https://github.com/wshobson/agents"
+}

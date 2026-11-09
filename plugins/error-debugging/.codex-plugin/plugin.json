@@ -1,0 +1,21 @@
+{
+  "name": "error-debugging",
+  "version": "1.2.2+codex.20261103.1",
+  "description": "Error analysis, trace debugging, and multi-agent problem diagnosis",
+  "skills": "./skills/",
+  "author": {
+    "name": "Seth Hobson",
+    "email": "seth@major7apps.com"
+  },
+  "license": "MIT",
+  "interface": {
+    "displayName": "Error Debugging",
+    "shortDescription": "Error analysis, trace debugging, and multi-agent problem diagnosis",
+    "category": "Coding",
+    "websiteURL": "https://github.com/wshobson/agents/tree/7e2fb559cf4b824b27f1fec49fe88f7511066d26/plugins/error-debugging",
+    "composerIcon": "./assets/github.png",
+    "logo": "./assets/github.png"
+  },
+  "homepage": "https://github.com/wshobson/agents/tree/7e2fb559cf4b824b27f1fec49fe88f7511066d26/plugins/error-debugging",
+  "repository": "https://github.com/wshobson/agents"
+}

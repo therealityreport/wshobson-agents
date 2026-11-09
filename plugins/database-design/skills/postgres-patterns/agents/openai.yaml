@@ -1,0 +1,5 @@
+interface:
+  display_name: "Postgres Patterns"
+  short_description: "PostgreSQL query, index, schema, and security patterns"
+  icon_small: "../../assets/postgresql.png"
+  icon_large: "../../assets/postgresql.png"

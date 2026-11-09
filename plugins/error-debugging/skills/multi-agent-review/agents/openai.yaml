@@ -1,0 +1,5 @@
+interface:
+  display_name: "Multi Agent Review"
+  short_description: "Error analysis, trace debugging, and multi-agent problem diagnos"
+  icon_small: "../../assets/github.png"
+  icon_large: "../../assets/github.png"

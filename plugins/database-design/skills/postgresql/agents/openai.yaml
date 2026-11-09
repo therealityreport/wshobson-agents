@@ -1,0 +1,5 @@
+interface:
+  display_name: "Postgresql Table Design"
+  short_description: "Database architecture, schema design, and SQL optimization for p"
+  icon_small: "../../assets/postgresql.png"
+  icon_large: "../../assets/postgresql.png"

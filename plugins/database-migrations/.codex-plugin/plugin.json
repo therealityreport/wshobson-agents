@@ -1,0 +1,21 @@
+{
+  "name": "database-migrations",
+  "version": "1.2.2+codex.20261103.1",
+  "description": "Database migration automation, observability, and cross-database migration strategies",
+  "skills": "./skills/",
+  "author": {
+    "name": "Seth Hobson",
+    "email": "seth@major7apps.com"
+  },
+  "license": "MIT",
+  "interface": {
+    "displayName": "Database Migrations",
+    "shortDescription": "Database migration automation, observability, and cross-database migration strategies",
+    "category": "Coding",
+    "websiteURL": "https://github.com/wshobson/agents/tree/7e2fb559cf4b824b27f1fec49fe88f7511066d26/plugins/database-migrations",
+    "composerIcon": "./assets/github.png",
+    "logo": "./assets/github.png"
+  },
+  "homepage": "https://github.com/wshobson/agents/tree/7e2fb559cf4b824b27f1fec49fe88f7511066d26/plugins/database-migrations",
+  "repository": "https://github.com/wshobson/agents"
+}

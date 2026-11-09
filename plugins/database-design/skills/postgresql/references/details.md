@@ -55,7 +55,7 @@ Enable with `ALTER TABLE tbl ENABLE ROW LEVEL SECURITY`. Create policies: `CREAT
 
 ### Upsert-friendly design
 
-- **Requires UNIQUE index** on conflict target columns—`ON CONFLICT (col1, col2)` needs exact matching unique index (partial indexes don't work).
+- **Requires a suitable unique index** for `ON CONFLICT DO UPDATE`. A partial unique index can be inferred when the conflict target includes a compatible `WHERE` predicate. Validate the inferred index against the intended uniqueness rule.
 - **Use `EXCLUDED.column`** to reference would-be-inserted values; only update columns that actually changed to reduce write overhead.
 - **`DO NOTHING` faster** than `DO UPDATE` when no actual update needed.
 
@@ -63,7 +63,7 @@ Enable with `ALTER TABLE tbl ENABLE ROW LEVEL SECURITY`. Create policies: `CREAT
 
 - **Transactional DDL**: most DDL operations can run in transactions and be rolled back—`BEGIN; ALTER TABLE...; ROLLBACK;` for safe testing.
 - **Concurrent index creation**: `CREATE INDEX CONCURRENTLY` avoids blocking writes but can't run in transactions.
-- **Volatile defaults cause rewrites**: adding `NOT NULL` columns with volatile defaults (e.g., `now()`, `gen_random_uuid()`) rewrites entire table. Non-volatile defaults are fast.
+- **Volatile defaults cause rewrites**: adding a column with a volatile default (e.g., `clock_timestamp()` or `gen_random_uuid()`) rewrites existing rows. On PG11+, non-volatile defaults such as `now()` can use the fast path. `NOT NULL` checks and lock acquisition still need separate assessment.
 - **Drop constraints before columns**: `ALTER TABLE DROP CONSTRAINT` then `DROP COLUMN` to avoid dependency issues.
 - **Function signature changes**: `CREATE OR REPLACE` with different arguments creates overloads, not replacements. DROP old version if no overload desired.
 
@@ -159,3 +159,11 @@ CREATE TABLE profiles (
 );
 CREATE INDEX profiles_attrs_gin ON profiles USING GIN (attrs);
 ```
+
+## Maintained corrections
+
+The Codex adaptation corrects inherited statements about partial unique indexes, default volatility, and multicolumn B-tree access. Check the target PostgreSQL version before applying examples.
+
+- [PostgreSQL 18: INSERT and conflict index inference](https://www.postgresql.org/docs/18/sql-insert.html)
+- [PostgreSQL 18: adding a column](https://www.postgresql.org/docs/18/ddl-alter.html)
+- [PostgreSQL 18: multicolumn indexes and skip scans](https://www.postgresql.org/docs/18/indexes-multicolumn.html)

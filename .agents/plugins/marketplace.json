@@ -197,11 +197,37 @@
       "category": "Coding"
     },
     {
+      "name": "database-cloud-optimization",
+      "description": "Database query optimization, cloud cost optimization, and scalability improvements",
+      "source": {
+        "source": "local",
+        "path": "./plugins/database-cloud-optimization"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      },
+      "category": "Coding"
+    },
+    {
       "name": "database-design",
       "description": "Database architecture, schema design, and SQL optimization for production systems",
       "source": {
         "source": "local",
         "path": "./plugins/database-design"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      },
+      "category": "Coding"
+    },
+    {
+      "name": "database-migrations",
+      "description": "Database migration automation, observability, and cross-database migration strategies",
+      "source": {
+        "source": "local",
+        "path": "./plugins/database-migrations"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -228,6 +254,19 @@
       "source": {
         "source": "local",
         "path": "./plugins/dgx-spark-ops"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      },
+      "category": "Coding"
+    },
+    {
+      "name": "distributed-debugging",
+      "description": "Distributed system tracing and debugging across microservices",
+      "source": {
+        "source": "local",
+        "path": "./plugins/distributed-debugging"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -267,6 +306,19 @@
       "source": {
         "source": "local",
         "path": "./plugins/dotnet-contribution"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      },
+      "category": "Coding"
+    },
+    {
+      "name": "error-debugging",
+      "description": "Error analysis, trace debugging, and multi-agent problem diagnosis",
+      "source": {
+        "source": "local",
+        "path": "./plugins/error-debugging"
       },
       "policy": {
         "installation": "AVAILABLE",

@@ -1,0 +1,5 @@
+interface:
+  display_name: "Debug Trace"
+  short_description: "Distributed system tracing and debugging across microservices"
+  icon_small: "../../assets/github.png"
+  icon_large: "../../assets/github.png"
